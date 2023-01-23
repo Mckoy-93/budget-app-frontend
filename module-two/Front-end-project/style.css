@@ -1,0 +1,234 @@
+
+html body {
+    /* background-image: url("https://media.cdn.adultswim.com/uploads/20220904/2294143541-RAMMobileHero.png");
+    background-size:cover;
+    overflow:auto;
+    height: 100%; 
+    width: 100%;
+    text-align: center;
+    color: rgb(94, 234, 94);
+    background-color:rgb(0, 42, 86); */
+    margin: 0;
+    padding: 0;
+
+  }
+html {
+    background-image: url("https://media.cdn.adultswim.com/uploads/20220904/2294143541-RAMMobileHero.png");
+    background-size:cover;
+    overflow:auto;
+    height: 100%; 
+    width: 100%;
+    text-align: center;
+    color: rgb(94, 234, 94);
+    background-color:rgb(0, 42, 86);
+
+}
+.RM {
+    display: grid;
+    height: 50%;
+    width: 75%;
+    margin-left: 12%;
+}
+
+.Rick {
+    font-family: bold;
+    font-size: 300%;
+    margin-top: 6%;
+    width: 32%;
+    grid-column: 1;
+    color: greenyellow;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+.And {
+  font-family: comic sans;
+  margin-left: 15%;
+  font-size: 300%;
+  width: 32%;
+  grid-column: 1;
+  color: greenyellow;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+}
+
+.Morty {
+
+    font-family: comic sans;
+    margin-left: 6%;
+    font-size: 300%;
+    width: 32%;
+    grid-column: 1;
+    color: greenyellow;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+  }
+
+
+
+.Main {
+  display: grid;
+  height: 95%;
+  width: 65%;
+  grid-column: 2;
+  grid-row: 1/6;
+  padding: 3%;
+  margin-left: 34%;
+}
+
+.Main li {
+  grid-row: 1;
+  padding: 15%;
+  margin: 9%;
+  margin-top: 0%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.home {
+    display: grid;
+    padding: 0% 28%;
+    height: 60%;
+    margin-left: 2%;
+  }
+  
+  
+  
+ 
+
+  .container {
+    display: grid;
+    margin-left: 20%;
+    margin-right: 30%;
+   
+  }
+  
+  .statistics {
+    display: grid;
+    margin-left: 15%;
+    margin-top: -15%;
+    margin-right: 52%;
+    background-color: darkgreen;
+  }
+
+  .RandMpic {
+    grid-column: 2;
+  grid-row: 1;
+  margin-left: 0%;
+
+  background-color: white;
+
+  }
+
+  .backhome {
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 36%;
+}
+
+#submitEnter {
+  width: 40%;
+  background-color: rgb(13, 216, 13);
+  color: rgb(2, 52, 85);
+  font-style: italic;
+  font: bold;
+  
+}
+
+#submitEnter :hover {
+  width: 60%;
+  background-color: ghostwhite;
+  color: darkgreen;
+  
+}
+
+.AboutPage ul li {
+    font-size: 150%;
+    grid-column: 1;
+    margin-left: 25%;
+    margin-right: 5%;
+    list-style: none;
+    display: inline-block;
+  }
+
+  .abouttheshow {
+    font-size: 140%;
+    color: black;
+    margin-left: 45%;
+  }
+
+.aboutBody {
+    background-image: url('https://m.media-amazon.com/images/I/51pG5REYl+L._AC_SY1000_.jpg');
+font-size: small;
+
+}
+    
+    
+  
+
+
+  
+  .home a {
+    color: rgb(37, 163, 37);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+  }
+
+
+
+
+  .ContactPage ul li {
+    font-size: 130%;
+    grid-column: 1;
+    margin-left: 26%;
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .aboutMe {
+    background-image: url('https://spartanspearhead.com/wp-content/uploads/2021/12/BE.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100%;
+    color: whitesmoke;
+  }
+  
+  .contact {
+    margin: 15%;
+    margin-top: 5%;
+    color: whitesmoke;
+  }
+  
+  
+  
+  .Contact a {
+    margin: 15%;
+    color: black;
+    margin-top: 10%;
+    font-size: 138%;
+  }
+  
+  .AboutPage a {
+    color: black(239, 16, 16);
+    text-decoration: none;
+  }
+  
+  .Contact p {
+    color: white;
+    font-size: 124%;
+    margin-left: 15%;
+    margin-top: -13%;
+  }
+  
+  /* media queries */
+  @media (min-width: 1280px) {
+  }
+  @media (max-width: 1279px) {
+  }
+  @media (max-width: 650px) {
+    .home {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
