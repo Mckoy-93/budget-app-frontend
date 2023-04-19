@@ -8,17 +8,19 @@ import { Routes, Route } from "react-router-dom";
   import Edit from "./Pages/Edit";
   import New from "./Pages/New";
   import Reload from "./Pages/Reload";
+  import { useState } from "react";
   
   const App = () => {
 
+  const [update, setUpdate] =  useState()
   return (
     <div className="App">
 
-<NavBar />
+<NavBar update={update}/>
       <main>
         <Routes>
-          <Route path="/" element={ <Home />} />
-          <Route path="/transactions" element={ <Index />} />
+          <Route path="/transactions" 
+          element={ <Index parentCallBack={setUpdate} />} />
           <Route path="/transactions/new" element={ <New />} />
           <Route path="/transactions/:index" element={ <Show />} />
           <Route path="/transactions/:index/edit" element={ <Edit />} />

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Format from "./Format.js";
+import Format from "./Format.js/index.js";
 import axios from "axios";
 
-const Transactions = () => {
+const Transactions = ({parentCallBack}) => {
   const [transactions, setTransactions] = useState([]);
   const [filter, setFilter] = useState({
     order: "",
@@ -12,7 +12,9 @@ const Transactions = () => {
 
   useEffect(() => {
     axios.get(`${URL}/transactions?order=${filter.order}&type=${filter.type}`)
-    .then((response) => {console.log(response.data); return setTransactions(response.data)});
+    .then((response) => { return setTransactions(response.data)})
+    .catch((e)=> {console.error("catch", e)})
+
   }, [URL, filter.order, filter.type]);
 
   const handleChange = (event) => {
@@ -22,10 +24,10 @@ const Transactions = () => {
   const total = transactions.reduce((acc, {amount}) => acc += Number(amount), 0)
 
   const display = (amount) => {
-    const positiveResult = Number(amount) > 1000 ? <span className="p-2 bg-primary text-white">{Number(amount).toLocaleString('en-US', {     
+    const positiveResult = Number(amount) > 1000 ? <span className="p-2 bg-success text-white">{Number(amount).toLocaleString('en-US', {     
       style: 'currency',     
       currency: 'USD',     
-      currencyDisplay: 'symbol'})}</span> : <span className="p-2 bg-success text-white">{Number(amount).toLocaleString('en-US', {     
+      currencyDisplay: 'symbol'})}</span> : <span className="p-2 bg-success text-light">{Number(amount).toLocaleString('en-US', {     
         style: 'currency',     
         currency: 'USD',     
         currencyDisplay: 'symbol'})}</span>
@@ -76,7 +78,7 @@ const Transactions = () => {
           </tbody>
         </table>
       </section>
-      <h2 className="text-end"><span className="align-middle">Total:</span> {display(total)}</h2>
+      <h2 className="text-end btn btn-outline-warning disabled"><span className="align-middle">Total:</span> {display(total)}</h2>
     </div>
   );
 }

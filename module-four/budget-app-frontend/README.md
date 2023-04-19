@@ -1,4 +1,6 @@
-Render Link, click [here]: (https://mckoy-budget-app-backend.onrender.com/)
+To view deployed solution to backend API, click [here]: (https://mckoy-budget-app-backend.onrender.com/)
+
+To view deployed solution to the Budget Money React App, click [here]
 
 # Full Stack Budgeting App
 
