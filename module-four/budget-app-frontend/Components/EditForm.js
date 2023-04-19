@@ -195,4 +195,6 @@ const EditForm = () => {
         </div>
     );
 }
+}
 export default EditForm;
+

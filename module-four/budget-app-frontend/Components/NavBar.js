@@ -25,7 +25,9 @@ const NavBar = ({update}) => {
         style: 'currency',     
         currency: 'USD',     
         currencyDisplay: 'symbol'})}</span>
-	 const NavBar = () => {
+    return Number(amount) > 0 ? positiveResult : <span className="p-2 bg-danger text-white rounded">{Number(amount).toLocaleString('en-US', {     
+        style: 'currency',     
+        currency: 'USD',     
         currencyDisplay: 'symbol'})}</span>
   }
 
