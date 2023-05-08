@@ -1,4 +1,5 @@
-import EditForm from "../Components/EditForm.js";
+import EditForm from "./EditForm";
+import React from 'react';
 
 const Edit = () => {
   return (

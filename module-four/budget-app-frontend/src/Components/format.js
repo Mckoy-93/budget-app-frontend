@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import React from 'react';
 
-const Format = ({ transaction }) => {
+const format = ({ transaction }) => {
   const display = (amount) => {
     const positiveResult = Number(amount) > 1000 ? <span className="col-2 float-end badge bg-primary text-truncate mt-1">{Number(amount).toLocaleString('en-US', {     
       style: 'currency',     
@@ -21,7 +22,7 @@ const Format = ({ transaction }) => {
     return `${month} / ${day} / ${year}`
   } 
   return (
-      <tr className="Transaction rounded mb-3">
+      <tr className="transaction rounded mb-3">
           <td className="row">
             <Link className="list-group-item list-group-item-action" to={`/transactions/${transaction.id}`}><span className="col-2 float-start badge bg-secondary text-truncate text-white mt-1">{formatDate(transaction.date)}</span><span className="col-7 badge bg-outline-secondary text-dark text-truncate ms-2 me-2 pt-2">{transaction.title}</span> {display(transaction.amount)}</Link>
           </td>
@@ -29,4 +30,4 @@ const Format = ({ transaction }) => {
   );
 }
 
-export default Format;
+export default format;

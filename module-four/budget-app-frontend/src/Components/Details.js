@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios"
+import React from 'react';
 
 const Details = () => {
     const navigate = useNavigate();
@@ -15,8 +16,7 @@ const Details = () => {
 
     const deleteTransaction = () => {
         axios.delete(`${URL}/transactions/${index}`)
-        .then(() => navigate("/transactions"))
-        .catch((e) => console.error(e));
+        .then(() => navigate("/transactions"));
     };
 
     const handleDelete = () => {
@@ -46,7 +46,7 @@ const Details = () => {
     const type = (type) => {
         return type === "Income" ? <span className="col p-2 bg-primary text-white border-start border-end">{type}</span> : <span className="col p-2 bg-danger text-white border-start border-end">{type}</span>
     }
-
+    
     return (
         <article className="container p-5 my-5 bg-warning text-dark rounded">
             <div className="container">
@@ -58,7 +58,7 @@ const Details = () => {
                 <p className="row mb-4"><span className="col p-2 bg-secondary text-white">{transaction.category}</span>{type(transaction.type)} {display(transaction.amount)} </p>
                 <hr className=""></hr>
             </div>
-            <div className="showNavigation btn-group mt-2 gap-3 container justify-content-between" style={{overflowX: "scroll"}}>
+            <div className="showNavigation btn-group mt-2 gap-3">
                 <div>
                 {" "}
                 <Link to={`/transactions`}>

@@ -1,7 +1,9 @@
+import React from 'react';
+
 const Home = () => {
     return (
       <div className="Home">
-        <h1 className="container p-5 my-5 bg-dark text-white text-center">Welcome to the Budget Money App</h1>
+        <h2>Welcome to the Budget Money App</h2>
       </div>
     );
   }

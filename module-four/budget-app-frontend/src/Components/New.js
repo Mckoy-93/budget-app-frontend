@@ -1,4 +1,5 @@
 import NewForm from "../Components/NewForm";
+import React from 'react';
 
 const New = () => {
   return (

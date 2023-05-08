@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios"
+import React from "react";
+
 const EditForm = () => {
     const navigate = useNavigate()
     const { index } = useParams();
@@ -12,6 +14,7 @@ const EditForm = () => {
         min: "",
         max: "",
     })
+
     const [transaction, setTransaction] = useState({
         id: index,
         date: "",
@@ -21,24 +24,19 @@ const EditForm = () => {
         category: "",
         type: ""
     });
-
-    
     const fetchData = async () => {
-        try {
-            const response = await axios.get(`${URL}/transactions/${index}`)
-            setTransaction(response.data)
-            setCheckbox({
-                text: response.data.type === "Income" ? "Income" : "Expense",
-                classList: response.data.type === "Income" ? "col list-group-item form-check-label border border-primary bg-primary text-white fs-2 rounded" : "col list-group-item form-check-label border border-danger bg-danger text-white fs-2 rounded",
-                checked: response.data.type === "Income" ? false : true,
-                min: response.data.type === "Income" ? 0 : "",
-                max: response.data.type === "Income" ? "" : 0,
-            })
-        } catch(err) {
-            alert(err) 
+        const response = await axios.get(`${URL}/transactions/${index}`) 
+        setTransaction(response.data)
+        setCheckbox({
+            text: response.data.type === "Income" ? "Income" : "Expense",
+            classList: response.data.type === "Income" ? "col list-group-item form-check-label border border-primary bg-primary text-white fs-2 rounded" : "col list-group-item form-check-label border border-danger bg-danger text-white fs-2 rounded",
+            checked: response.data.type === "Income" ? false : true,
+            min: response.data.type === "Income" ? 0 : "",
+            max: response.data.type === "Income" ? "" : 0,
+        })
     }
     !transaction.type && fetchData()
-
+    
     const handleCheckboxChange = (event) => {
         if (event.target.checked === false) {
             setCheckbox({
@@ -67,6 +65,7 @@ const EditForm = () => {
             setTransaction({...transaction, type: "Expense"})
         }
     };
+
     const handleTextChange = (event) => {
         if (event.target.id === "amount") {
             if (transaction.type === "Income") {
@@ -87,8 +86,7 @@ const EditForm = () => {
 
     const updateTransaction = (editedTransaction) => {
         axios.put(`${URL}/transactions/${index}`, editedTransaction)
-        .then(() => navigate(`/transactions/${index}`))
-        .catch((c) => console.warn("catch", c));
+        .then(() => navigate(`/transactions/${index}`));
     }
 
     const handleSubmit = (event) => {
@@ -97,7 +95,7 @@ const EditForm = () => {
     };
 
     return (
-        <div className="Edit container p-5 my-5 bg-warning text-dark rounded" style={{overflowX: "scroll"}}>
+        <div className="Edit container p-5 my-5 bg-warning text-dark rounded">
             <form onSubmit={handleSubmit}>
                 <div className="form-floating mb-2 mt-2">
                     <input
@@ -164,9 +162,8 @@ const EditForm = () => {
                 </div>
                 <label className="col-4 text-muted mb-3" htmlFor="category">
                     <select onChange={handleTextChange} className="form-control-sm bg-warning text-muted m-2" name="category" id="category" value={transaction.category}required>
-                    <option className="dropdown-item" value="">---choose a category---</option>
+                        <option className="dropdown-item" value="">---choose a category---</option>
                         <option className="dropdown-item" value="Income">Income</option>
-                        <option className="dropdown-item" value="Expenses">Expenses</option>
                         <option className="dropdown-item" value="Taxes">Taxes</option>
                         <option className="dropdown-item" value="Retirement">Retirement</option>
                         <option className="dropdown-item" value="Savings">Savings</option>
@@ -195,6 +192,5 @@ const EditForm = () => {
         </div>
     );
 }
-}
-export default EditForm;
 
+export default EditForm;

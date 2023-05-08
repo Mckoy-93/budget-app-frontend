@@ -1,4 +1,6 @@
-const NewPage = () => {
+import React from 'react';
+
+const Reload = () => {
     return (
       <div className="container p-5 my-5 bg-dark text-white text-center">
         <h1>Sorry, no page found</h1>
@@ -7,4 +9,4 @@ const NewPage = () => {
   }
   
   
-  export default NewPage;
+  export default Reload;

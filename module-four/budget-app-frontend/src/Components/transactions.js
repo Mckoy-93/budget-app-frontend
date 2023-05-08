@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import Format from "./Format.js/index.js";
+import Format from "./format.js";
 import axios from "axios";
+import React from 'react';
 
-const Transactions = ({parentCallBack}) => {
+const transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [filter, setFilter] = useState({
     order: "",
@@ -12,11 +13,9 @@ const Transactions = ({parentCallBack}) => {
 
   useEffect(() => {
     axios.get(`${URL}/transactions?order=${filter.order}&type=${filter.type}`)
-    .then((response) => { return setTransactions(response.data)})
-    .catch((e)=> {console.error("catch", e)})
-
+    .then((response) => {console.log(response.data); return setTransactions(response.data)});
   }, [URL, filter.order, filter.type]);
-
+  
   const handleChange = (event) => {
     filter[event.target.name] !== event.target.value && setFilter({...filter, [event.target.name]: event.target.value})
   };
@@ -24,10 +23,10 @@ const Transactions = ({parentCallBack}) => {
   const total = transactions.reduce((acc, {amount}) => acc += Number(amount), 0)
 
   const display = (amount) => {
-    const positiveResult = Number(amount) > 1000 ? <span className="p-2 bg-success text-white">{Number(amount).toLocaleString('en-US', {     
+    const positiveResult = Number(amount) > 1000 ? <span className="p-2 bg-primary text-white">{Number(amount).toLocaleString('en-US', {     
       style: 'currency',     
       currency: 'USD',     
-      currencyDisplay: 'symbol'})}</span> : <span className="p-2 bg-success text-light">{Number(amount).toLocaleString('en-US', {     
+      currencyDisplay: 'symbol'})}</span> : <span className="p-2 bg-success text-white">{Number(amount).toLocaleString('en-US', {     
         style: 'currency',     
         currency: 'USD',     
         currencyDisplay: 'symbol'})}</span>
@@ -36,9 +35,9 @@ const Transactions = ({parentCallBack}) => {
         currency: 'USD',     
         currencyDisplay: 'symbol'})}</span>
   }
-
+  
   return (
-    <div className="Transactions container p-5 my-5 bg-success rounded">
+    <div className="transactions container p-5 my-5 bg-success rounded">
       <h2>Transaction History</h2>
       <button
         className="btn btn-outline-light mb-3 mt-3"
@@ -78,9 +77,9 @@ const Transactions = ({parentCallBack}) => {
           </tbody>
         </table>
       </section>
-      <h2 className="text-end btn btn-outline-warning disabled"><span className="align-middle">Total:</span> {display(total)}</h2>
+      <h2 className="text-end"><span className="align-middle">Total:</span> {display(total)}</h2>
     </div>
   );
 }
 
-export default Transactions;
+export default transactions;
